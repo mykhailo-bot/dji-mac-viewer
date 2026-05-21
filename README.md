@@ -10,7 +10,7 @@ No subscriptions. No cloud. No heavy apps. Just your drone feed on your MacBook.
 
 ## Why this exists
 
-DJI Goggles 3 can stream video via RTMP through the DJI Fly app — but there's no simple, free way to view that stream on a MacBook, especially in the field without internet. This project fixes that.
+DJI Goggles 3 can stream video via RTMP through the DJI Fly app - but there's no simple, free way to view that stream on a MacBook, especially in the field without internet. This project fixes that.
 
 **One double-click → drone feed on your screen.**
 
@@ -18,11 +18,11 @@ DJI Goggles 3 can stream video via RTMP through the DJI Fly app — but there's 
 
 ## Features
 
-- ✅ Works completely **offline** — local network only
-- ✅ **Auto-detects your Mac's IP** — no manual configuration in the field
+- ✅ Works completely **offline** - local network only
+- ✅ **Auto-detects your Mac's IP** - no manual configuration in the field
 - ✅ Opens video **fullscreen** automatically
 - ✅ Works at **home** (your WiFi) and **in the field** (Mac as hotspot)
-- ✅ No Electron, no browser, no subscriptions — just shell scripts
+- ✅ No Electron, no browser, no subscriptions - just shell scripts
 - ✅ Packages as a native **macOS .app** with custom icon
 
 ---
@@ -61,15 +61,15 @@ That's it. A `DroneStream.app` will appear on your Desktop.
 5. Video opens fullscreen automatically
 
 ### In the field (no WiFi)
-**Option A — Mac as hotspot (recommended):**
+**Option A - Mac as hotspot (recommended):**
 1. System Settings → General → Sharing → Internet Sharing → enable WiFi hotspot
 2. Connect your phone to the Mac's hotspot
-3. Double-click **DroneStream.app** — IP is always `192.168.2.1`
+3. Double-click **DroneStream.app** - IP is always `192.168.2.1`
 
-**Option B — Phone as hotspot:**
+**Option B - Phone as hotspot:**
 1. Enable Personal Hotspot on your phone
 2. Connect Mac to phone's hotspot
-3. Launch **DroneStream.app** — it will show the current IP automatically
+3. Launch **DroneStream.app** - it will show the current IP automatically
 
 ### DJI Fly settings
 | Field | Value |
@@ -118,7 +118,7 @@ dji-mac-viewer/
 - Try restarting the stream in DJI Fly
 
 **"Connection refused" error:**
-- The server isn't running — relaunch DroneStream.app
+- The server isn't running - relaunch DroneStream.app
 
 **High latency:**
 - Switch from WiFi to Mac hotspot (fewer network hops)
@@ -157,7 +157,7 @@ MIT
 
 ## Навіщо це
 
-DJI Goggles 3 може транслювати відео через RTMP за допомогою додатку DJI Fly — але немає простого безкоштовного способу переглядати цей потік на MacBook, особливо в полі без інтернету. Цей проект вирішує цю проблему.
+DJI Goggles 3 може транслювати відео через RTMP за допомогою додатку DJI Fly - але немає простого безкоштовного способу переглядати цей потік на MacBook, особливо в полі без інтернету. Цей проект вирішує цю проблему.
 
 **Один подвійний клік → відео з дрона на екрані.**
 
@@ -185,15 +185,15 @@ bash install.sh
 5. Відео відкриється на весь екран автоматично
 
 ### В полі (без WiFi)
-**Варіант А — Mac як точка доступу (рекомендовано):**
+**Варіант А - Mac як точка доступу (рекомендовано):**
 1. Системні налаштування → Загальні → Спільний доступ → Інтернет → увімкни WiFi
 2. Підключи телефон до мережі Mac
-3. Запусти **DroneStream.app** — IP завжди `192.168.2.1`
+3. Запусти **DroneStream.app** - IP завжди `192.168.2.1`
 
-**Варіант Б — Телефон як хотспот:**
+**Варіант Б - Телефон як хотспот:**
 1. Увімкни точку доступу на телефоні
 2. Підключи Mac до хотспоту
-3. Запусти **DroneStream.app** — IP визначиться автоматично
+3. Запусти **DroneStream.app** - IP визначиться автоматично
 
 ### Налаштування DJI Fly
 | Поле | Значення |
