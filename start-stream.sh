@@ -3,7 +3,7 @@ SERVER_DIR="$HOME/rtmp-server"
 LOG="$SERVER_DIR/server.log"
 STREAM="rtmp://localhost/live/drone"
 
-# Знаходимо активний IP (WiFi, хотспот або будь-який інший)
+# Detect active IP (WiFi, hotspot, or any available interface)
 get_ip() {
   for iface in en0 en1 en2 bridge100 utun0; do
     IP=$(ipconfig getifaddr $iface 2>/dev/null)
@@ -12,7 +12,7 @@ get_ip() {
       return
     fi
   done
-  echo "не знайдено"
+  echo "not found"
 }
 
 MY_IP=$(get_ip)
@@ -21,30 +21,30 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "  🚁 DRONE STREAM LAUNCHER"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-echo "  📍 IP цього Mac:  $MY_IP"
+echo "  📍 This Mac's IP:  $MY_IP"
 echo ""
-echo "  📡 В DJI Fly вбий:"
-echo "     Адрес RTMP: rtmp://$MY_IP/"
-echo "     Ключ:       live/drone"
+echo "  📡 Enter in DJI Fly:"
+echo "     RTMP Address: rtmp://$MY_IP/"
+echo "     Stream Key:   live/drone"
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
-echo "🚀 Запускаю сервер..."
+echo "🚀 Starting server..."
 pkill -f "node server.js" 2>/dev/null
 sleep 1
 > "$LOG"
 cd "$SERVER_DIR"
 nohup node server.js > "$LOG" 2>&1 &
 
-echo "✅ Сервер запущено"
+echo "✅ Server started"
 echo ""
-echo "⏳ Чекаю на підключення DJI Fly..."
+echo "⏳ Waiting for DJI Fly to connect..."
 
 for i in $(seq 1 60); do
   if grep -q "start push /live/drone" "$LOG" 2>/dev/null; then
     echo ""
-    echo "🎥 Сигнал є! Відкриваю відео..."
+    echo "🎥 Signal received! Opening video..."
     sleep 1
     ffmpeg -fflags nobuffer+genpts \
            -i "$STREAM" \
@@ -61,7 +61,7 @@ for i in $(seq 1 60); do
         set frontmost of theProcess to true
     end tell' 2>/dev/null
     echo ""
-    echo "✅ Готово! Закрий це вікно коли захочеш зупинити."
+    echo "✅ Done! Close this window when you want to stop."
     break
   fi
   echo -n "."
@@ -70,11 +70,11 @@ done
 
 if ! grep -q "start push /live/drone" "$LOG" 2>/dev/null; then
   echo ""
-  echo "⚠️  DJI Fly не підключився за 60 секунд."
-  echo "   IP цього Mac: $MY_IP"
-  echo "   Перевір що телефон в тій самій мережі."
+  echo "⚠️  DJI Fly did not connect within 60 seconds."
+  echo "   This Mac's IP: $MY_IP"
+  echo "   Make sure your phone is on the same network."
 fi
 
 echo ""
-echo "── Лог сервера ─────────────────────────────────────"
+echo "── Server log ──────────────────────────────────────"
 tail -f "$LOG"
